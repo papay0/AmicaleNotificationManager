@@ -15,10 +15,9 @@ angular.module('amicale', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
 
 require('./config')
 require('./services')
-require('./filters')
 require('./controllers')
 
-},{"./config":3,"./controllers":6,"./filters":7,"./services":12,"angular-material":19,"angular-messages":21,"angular-route":23,"angularfire":27,"firebase":28}],2:[function(require,module,exports){
+},{"./config":3,"./controllers":5,"./services":8,"angular-material":15,"angular-messages":17,"angular-route":19,"angularfire":23,"firebase":24}],2:[function(require,module,exports){
 angular.module('amicale').config(Router);
 
 function Router($routeProvider) {
@@ -59,7 +58,12 @@ function LoginCtrl(AuthService) {
     password: ""
   }
 
+  vm.printCoucou = function(){
+    console.log("coucou")
+  }
+
   vm.login = function() {
+    console.log("login function")
     console.log(vm.user.email)
     AuthService.login(vm.user.email, vm.user.password, function(error, res) {
       if (error) {
@@ -72,50 +76,15 @@ function LoginCtrl(AuthService) {
 }
 
 },{}],5:[function(require,module,exports){
-// app/controllers/MainCtrl.js
-
-/**
-  * Main controller of the app
-**/
-
-angular.module('amicale').controller('MainCtrl', MainCtrl);
-
-function MainCtrl($mdSidenav) {
-  var vm = this;
-  vm.toggleSideMenu = function() {
-    $mdSidenav('left').toggle();
-  }
-}
-
-},{}],6:[function(require,module,exports){
 // app/controllers/index.js
 
 /**
   * Require all controllers
 **/
 
-require('./MainCtrl.js');
 require('./LoginCtrl.js');
 
-},{"./LoginCtrl.js":4,"./MainCtrl.js":5}],7:[function(require,module,exports){
-// app/filters/index.js
-
-/**
-  * Require all filters
-**/
-
-require('./isMobile.js')
-
-},{"./isMobile.js":8}],8:[function(require,module,exports){
-angular.module('amicale').filter('isMobile', isMobile);
-
-function isMobile ($mdMedia) {
-  return function(then, otherwise) {
-    return $mdMedia('gt-sm') ? then : otherwise
-  }
-}
-
-},{}],9:[function(require,module,exports){
+},{"./LoginCtrl.js":4}],6:[function(require,module,exports){
 // app/services/AuthService.js
 
 /**
@@ -144,35 +113,7 @@ function AuthService ($firebaseAuth) {
   return AuthService;
 }
 
-},{}],10:[function(require,module,exports){
-// app/services/EventService.js
-
-/**
-  * Event service: in charge of the communication with Firebase
-**/
-
-angular.module('amicale').factory('EventService', EventService);
-
-function EventService ($firebaseArray) {
-  var EventService = {}
-
-  EventService.ref = new Firebase("https://planner31.firebaseio.com/events")
-  EventService.events = $firebaseArray(EventService.ref)
-
-  EventService.addEvent = function (typeEvent) {
-    this.events.$add({name:"event",type:typeEvent}).then(function(ref) {
-      var id = ref.key()
-      console.log("added record with id " + id)
-    })
-  };
-
-  EventService.removeEvent = function(event) {
-    this.events.$remove(event)
-  }
-  return EventService;
-}
-
-},{}],11:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 // app/services/SharedService.js
 
 /**
@@ -195,7 +136,7 @@ function SharedService ($rootScope) {
   return SharedService;
 }
 
-},{}],12:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // app/services/index.js
 
 /**
@@ -204,18 +145,17 @@ function SharedService ($rootScope) {
 
 require('./models')
 
-require('./EventService.js')
 require('./SharedService.js')
 require('./AuthService.js')
 
-},{"./AuthService.js":9,"./EventService.js":10,"./SharedService.js":11,"./models":13}],13:[function(require,module,exports){
+},{"./AuthService.js":6,"./SharedService.js":7,"./models":9}],9:[function(require,module,exports){
 // app/services/models/index.js
 
 /**
   * Require all models
 **/
 
-},{}],14:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4332,11 +4272,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],15:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":14}],16:[function(require,module,exports){
+},{"./angular-animate":10}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4736,11 +4676,11 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 
 })(window, window.angular);
 
-},{}],17:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 require('./angular-aria');
 module.exports = 'ngAria';
 
-},{"./angular-aria":16}],18:[function(require,module,exports){
+},{"./angular-aria":12}],14:[function(require,module,exports){
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -29602,7 +29542,7 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 
 
 })(window, window.angular);;window.ngMaterial={version:{full: "1.0.7"}};
-},{}],19:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 // Should already be required, here for clarity
 require('angular');
 
@@ -29616,7 +29556,7 @@ require('./angular-material');
 // Export namespace
 module.exports = 'ngMaterial';
 
-},{"./angular-material":18,"angular":25,"angular-animate":15,"angular-aria":17}],20:[function(require,module,exports){
+},{"./angular-material":14,"angular":21,"angular-animate":11,"angular-aria":13}],16:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -30340,11 +30280,11 @@ function ngMessageDirectiveFactory() {
 
 })(window, window.angular);
 
-},{}],21:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 require('./angular-messages');
 module.exports = 'ngMessages';
 
-},{"./angular-messages":20}],22:[function(require,module,exports){
+},{"./angular-messages":16}],18:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31368,11 +31308,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],23:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":22}],24:[function(require,module,exports){
+},{"./angular-route":18}],20:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -62087,11 +62027,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],25:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":24}],26:[function(require,module,exports){
+},{"./angular":20}],22:[function(require,module,exports){
 /*!
  * AngularFire is the officially supported AngularJS binding for Firebase. Firebase
  * is a full backend so you don't need servers to build your Angular app. AngularFire
@@ -64431,11 +64371,11 @@ if ( typeof Object.getPrototypeOf !== "function" ) {
     }
 })();
 
-},{}],27:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 require('./dist/angularfire');
 module.exports = 'firebase';
 
-},{"./dist/angularfire":26}],28:[function(require,module,exports){
+},{"./dist/angularfire":22}],24:[function(require,module,exports){
 /*! @license Firebase v2.4.2
     License: https://www.firebase.com/terms/terms-of-service.html */
 (function() {var h,n=this;function p(a){return void 0!==a}function aa(){}function ba(a){a.yb=function(){return a.zf?a.zf:a.zf=new a}}

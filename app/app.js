@@ -14,5 +14,4 @@ angular.module('amicale', ['ngMaterial', 'firebase', 'ngRoute', 'ngMessages'])
 
 require('./config')
 require('./services')
-require('./filters')
 require('./controllers')

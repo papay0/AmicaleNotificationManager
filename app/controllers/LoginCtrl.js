@@ -14,7 +14,12 @@ function LoginCtrl(AuthService) {
     password: ""
   }
 
+  vm.printCoucou = function(){
+    console.log("coucou")
+  }
+
   vm.login = function() {
+    console.log("login function")
     console.log(vm.user.email)
     AuthService.login(vm.user.email, vm.user.password, function(error, res) {
       if (error) {
