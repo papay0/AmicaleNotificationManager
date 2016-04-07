@@ -1,33 +1,38 @@
-<div class="materialContainer">
-  <div class="box">
-    <div class="title">LOGIN</div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <div>
-      <form name="loginForm">
-        <md-content flex layout-padding>
-          <md-input-container class="md-icon-float md-block">
-            <label>Username</label>
-            <input ng-model="loginCtrl.user.email" type="email" name="email" required>
-            <div ng-messages="loginForm.email.$error">
+<div id="bg-login">
+  <img src="../images/Wallpaper-Amicale-Login.png" alt="">
+  <div class="materialContainer">
+    <div class="box">
+      <div class="title">LOGIN</div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div>
+        <form name="loginForm">
+          <md-content flex layout-padding>
+            <md-input-container class="md-icon-float md-block">
+              <label>Username</label>
+              <input ng-model="loginCtrl.user.email" type="email" name="email" required>
+              <div ng-messages="loginForm.email.$error">
                 <div ng-message="required">This is required.</div>
                 <div ng-message="email">The email adress is not correct</div>
-            </div>
-          </md-input-container> <br/>
-          <md-input-container class="md-icon-float md-block">
-            <label>Password</label>
-            <input ng-model="loginCtrl.user.password" type="password" name="password" required>
-            <div ng-messages="loginForm.password.$error">
+              </div>
+            </md-input-container> <br/>
+            <md-input-container class="md-icon-float md-block">
+              <label>Password</label>
+              <input ng-model="loginCtrl.user.password" type="password" name="password" required>
+              <div ng-messages="loginForm.password.$error">
                 <div ng-message="required">This is required.</div>
-            </div>
-          </md-input-container>
-          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-            <md-button flex="40" class="md-raised md-primary" layout-align="center center" ng-click="loginCtrl.printCoucou()" >Login</md-button>
-          </section>
-        </div>
-      </md-content>
-    </form>
+              </div>
+            </md-input-container>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+              <md-button class="md-raised md-primary" layout-align="center center" ng-click="loginCtrl.login()" >Login</md-button>
+            </section>
+          </div>
+        </md-content>
+      </form>
+    </div>
   </div>
+  <!-- </div> -->
+
 </div>

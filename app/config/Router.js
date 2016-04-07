@@ -5,7 +5,12 @@ function Router($routeProvider) {
   .when('/login', {
     templateUrl: 'views/login.html',
     controller: 'LoginCtrl',
-    controllerAs: 'login'
+    controllerAs: 'loginCtrl'
+  })
+  .when('/', {
+    templateUrl: 'views/posts.html',
+    controller: 'PostsCtrl',
+    controllerAs: 'postsCtrl'
   })
   .otherwise({
     redirectTo: '/login'

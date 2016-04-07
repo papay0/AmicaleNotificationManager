@@ -17,7 +17,7 @@ require('./config')
 require('./services')
 require('./controllers')
 
-},{"./config":3,"./controllers":5,"./services":8,"angular-material":15,"angular-messages":17,"angular-route":19,"angularfire":23,"firebase":24}],2:[function(require,module,exports){
+},{"./config":3,"./controllers":6,"./services":9,"angular-material":16,"angular-messages":18,"angular-route":20,"angularfire":24,"firebase":25}],2:[function(require,module,exports){
 angular.module('amicale').config(Router);
 
 function Router($routeProvider) {
@@ -25,7 +25,12 @@ function Router($routeProvider) {
   .when('/login', {
     templateUrl: 'views/login.html',
     controller: 'LoginCtrl',
-    controllerAs: 'login'
+    controllerAs: 'loginCtrl'
+  })
+  .when('/', {
+    templateUrl: 'views/posts.html',
+    controller: 'PostsCtrl',
+    controllerAs: 'postsCtrl'
   })
   .otherwise({
     redirectTo: '/login'
@@ -58,10 +63,6 @@ function LoginCtrl(AuthService) {
     password: ""
   }
 
-  vm.printCoucou = function(){
-    console.log("coucou")
-  }
-
   vm.login = function() {
     console.log("login function")
     console.log(vm.user.email)
@@ -76,6 +77,20 @@ function LoginCtrl(AuthService) {
 }
 
 },{}],5:[function(require,module,exports){
+// app/controllers/PostsCtrl.js
+
+/**
+  * Posts controller of the app
+**/
+
+angular.module('amicale').controller('PostsCtrl', PostsCtrl);
+
+function PostsCtrl(AuthService) {
+  var vm = this;
+
+}
+
+},{}],6:[function(require,module,exports){
 // app/controllers/index.js
 
 /**
@@ -83,8 +98,9 @@ function LoginCtrl(AuthService) {
 **/
 
 require('./LoginCtrl.js');
+require('./PostsCtrl.js');
 
-},{"./LoginCtrl.js":4}],6:[function(require,module,exports){
+},{"./LoginCtrl.js":4,"./PostsCtrl.js":5}],7:[function(require,module,exports){
 // app/services/AuthService.js
 
 /**
@@ -113,7 +129,7 @@ function AuthService ($firebaseAuth) {
   return AuthService;
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // app/services/SharedService.js
 
 /**
@@ -136,7 +152,7 @@ function SharedService ($rootScope) {
   return SharedService;
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // app/services/index.js
 
 /**
@@ -148,14 +164,14 @@ require('./models')
 require('./SharedService.js')
 require('./AuthService.js')
 
-},{"./AuthService.js":6,"./SharedService.js":7,"./models":9}],9:[function(require,module,exports){
+},{"./AuthService.js":7,"./SharedService.js":8,"./models":10}],10:[function(require,module,exports){
 // app/services/models/index.js
 
 /**
   * Require all models
 **/
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4272,11 +4288,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":10}],12:[function(require,module,exports){
+},{"./angular-animate":11}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4676,11 +4692,11 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 
 })(window, window.angular);
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 require('./angular-aria');
 module.exports = 'ngAria';
 
-},{"./angular-aria":12}],14:[function(require,module,exports){
+},{"./angular-aria":13}],15:[function(require,module,exports){
 /*!
  * Angular Material Design
  * https://github.com/angular/material
@@ -29542,7 +29558,7 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 
 
 })(window, window.angular);;window.ngMaterial={version:{full: "1.0.7"}};
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 // Should already be required, here for clarity
 require('angular');
 
@@ -29556,7 +29572,7 @@ require('./angular-material');
 // Export namespace
 module.exports = 'ngMaterial';
 
-},{"./angular-material":14,"angular":21,"angular-animate":11,"angular-aria":13}],16:[function(require,module,exports){
+},{"./angular-material":15,"angular":22,"angular-animate":12,"angular-aria":14}],17:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -30280,11 +30296,11 @@ function ngMessageDirectiveFactory() {
 
 })(window, window.angular);
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 require('./angular-messages');
 module.exports = 'ngMessages';
 
-},{"./angular-messages":16}],18:[function(require,module,exports){
+},{"./angular-messages":17}],19:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31308,11 +31324,11 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 require('./angular-route');
 module.exports = 'ngRoute';
 
-},{"./angular-route":18}],20:[function(require,module,exports){
+},{"./angular-route":19}],21:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.3
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -62027,11 +62043,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":20}],22:[function(require,module,exports){
+},{"./angular":21}],23:[function(require,module,exports){
 /*!
  * AngularFire is the officially supported AngularJS binding for Firebase. Firebase
  * is a full backend so you don't need servers to build your Angular app. AngularFire
@@ -64371,11 +64387,11 @@ if ( typeof Object.getPrototypeOf !== "function" ) {
     }
 })();
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 require('./dist/angularfire');
 module.exports = 'firebase';
 
-},{"./dist/angularfire":22}],24:[function(require,module,exports){
+},{"./dist/angularfire":23}],25:[function(require,module,exports){
 /*! @license Firebase v2.4.2
     License: https://www.firebase.com/terms/terms-of-service.html */
 (function() {var h,n=this;function p(a){return void 0!==a}function aa(){}function ba(a){a.yb=function(){return a.zf?a.zf:a.zf=new a}}
