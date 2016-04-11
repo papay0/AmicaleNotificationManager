@@ -10,9 +10,14 @@ function Router($routeProvider) {
   .when('/', {
     templateUrl: 'views/posts.html',
     controller: 'PostsCtrl',
-    controllerAs: 'postsCtrl'
+    controllerAs: 'postsCtrl',
+    resolve: {
+      "currentAuth": ["AuthService", function(AuthService) {
+        return AuthService.requireAuth()
+      }]
+    }
   })
   .otherwise({
-    redirectTo: '/login'
+    redirectTo: '/'
   })
 }

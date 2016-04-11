@@ -6,3 +6,4 @@
 
 require('./LoginCtrl.js');
 require('./PostsCtrl.js');
+require('./SideBarCtrl.js');

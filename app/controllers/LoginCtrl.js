@@ -6,7 +6,7 @@
 
 angular.module('amicale').controller('LoginCtrl', LoginCtrl);
 
-function LoginCtrl(AuthService) {
+function LoginCtrl(AuthService, NotificationsService, $location) {
   var vm = this;
 
   vm.user = {
@@ -15,14 +15,13 @@ function LoginCtrl(AuthService) {
   }
 
   vm.login = function() {
-    console.log("login function")
-    console.log(vm.user.email)
     AuthService.login(vm.user.email, vm.user.password, function(error, res) {
       if (error) {
-        console.log("error on login: "+error)
+        NotificationsService.error("Error during logging. Please verify your password.");
       } else {
-        console.log("okay")
+        $location.path('/')
       }
     })
   }
+
 }

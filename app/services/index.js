@@ -8,3 +8,4 @@ require('./models')
 
 require('./SharedService.js')
 require('./AuthService.js')
+require('./NotificationsService.js')
